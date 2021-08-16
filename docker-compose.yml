@@ -1,0 +1,24 @@
+version: '3'
+services:
+  
+  #PostgreSQL Service
+  db:
+    image: postgres
+    container_name: car-info-retriever-db
+    restart: unless-stopped 
+    tty: true 
+    ports:
+      - "5432:5432"
+    environment:
+      LC_ALL: C.UTF-8
+      POSTGRES_USER: cird
+      POSTGRES_PASSWORD: cird
+      POSTGRES_DB: cird
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+#Volumes
+volumes:
+  pgdata:
+    driver: local
+    
